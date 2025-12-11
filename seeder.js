@@ -9,20 +9,19 @@ const __dirname = path.dirname(__filename);
 
 const createTableQuery = `
   CREATE TABLE IF NOT EXISTS credits (
-    ApplicationID VARCHAR(50) PRIMARY KEY,
-    ClientID VARCHAR(50),
-    Product VARCHAR(100),
-    Branch VARCHAR(100),
-    Status VARCHAR(50),
-    ApplicationDate DATE,
-    Phase1_Start DATE,
-    Phase1_End DATE,
-    Phase2_Start DATE,
-    Phase2_End DATE,
-    Phase3_Start DATE,
-    Phase3_End DATE,
-    FinalDecisionDate DATE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    "ApplicationID" VARCHAR(50) PRIMARY KEY,
+    "ClientID" VARCHAR(50),
+    "Product" VARCHAR(100),
+    "Branch" VARCHAR(100),
+    "Status" VARCHAR(50),
+    "ApplicationDate" DATE,
+    "Phase1_Start" DATE,
+    "Phase1_End" DATE,
+    "Phase2_Start" DATE,
+    "Phase2_End" DATE,
+    "Phase3_Start" DATE,
+    "Phase3_End" DATE,
+    "FinalDecisionDate" DATE
   );
 `;
 
@@ -64,12 +63,12 @@ export async function seedDatabase() {
       try {
         const insertQuery = `
           INSERT INTO credits (
-            ApplicationID, ClientID, Product, Branch, Status,
-            ApplicationDate, Phase1_Start, Phase1_End,
-            Phase2_Start, Phase2_End, Phase3_Start, Phase3_End,
-            FinalDecisionDate
+            "ApplicationID", "ClientID", "Product", "Branch", "Status",
+            "ApplicationDate", "Phase1_Start", "Phase1_End",
+            "Phase2_Start", "Phase2_End", "Phase3_Start", "Phase3_End",
+            "FinalDecisionDate"
           ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
-          ON CONFLICT (ApplicationID) DO NOTHING
+          ON CONFLICT ("ApplicationID") DO NOTHING
         `;
 
         await client.query(insertQuery, [
